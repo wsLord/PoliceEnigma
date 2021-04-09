@@ -1,0 +1,10 @@
+.setting
+{
+    -fx-background-image: url('../../Static/img/setting.png');
+    -fx-background-size: 100% 100%;
+}
+.avatar
+{
+   -fx-background-image: url('../../Static/img/avatar.jpg');
+   -fx-background-size: 100% 100%;
+}
