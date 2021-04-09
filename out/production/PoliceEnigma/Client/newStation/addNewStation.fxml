@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="571.0" prefWidth="1154.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.newStation.addNewStationController">
+   <top>
+      <Pane prefHeight="43.0" prefWidth="1154.0" style="-fx-background-color: #A52A2A;" BorderPane.alignment="CENTER">
+         <children>
+            <Text fill="WHITE" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PoliceEnigma" textAlignment="CENTER" wrappingWidth="1176.1366882324219">
+               <font>
+                  <Font name="GothicE" size="26.0" />
+               </font>
+            </Text>
+            <Button layoutY="-1.0" mnemonicParsing="false" onAction="#onActionBack" prefHeight="43.0" prefWidth="46.0" styleClass="back" stylesheets="@../newCase/newCase.css">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+         </children>
+      </Pane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="494.0" prefWidth="1165.0" style="-fx-background-color: #EADDCA;" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="TOP_LEFT" layoutX="26.0" layoutY="75.0" prefHeight="23.0" prefWidth="100.0" text="Name" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="name" layoutX="112.0" layoutY="71.0" prefHeight="25.0" prefWidth="229.0" promptText="Name">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <Label alignment="CENTER" layoutX="408.0" layoutY="20.0" prefHeight="29.0" prefWidth="368.0" text="ADD NEW POLICE STATION">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+               <effect>
+                  <Reflection fraction="0.55" topOpacity="0.65" />
+               </effect>
+            </Label>
+            <Label alignment="TOP_LEFT" layoutX="26.0" layoutY="237.0" prefHeight="23.0" prefWidth="100.0" text="City" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="name1" layoutX="112.0" layoutY="233.0" prefHeight="25.0" prefWidth="229.0" promptText="City">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <Label alignment="TOP_LEFT" layoutX="26.0" layoutY="342.0" prefHeight="23.0" prefWidth="100.0" text="State" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="name11" layoutX="112.0" layoutY="338.0" prefHeight="25.0" prefWidth="229.0" promptText="State">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextArea layoutX="112.0" layoutY="118.0" prefHeight="101.0" prefWidth="229.0" promptText="Area">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextArea>
+            <Label alignment="TOP_LEFT" layoutX="26.0" layoutY="118.0" prefHeight="23.0" prefWidth="100.0" text="Area" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="name12" layoutX="112.0" layoutY="285.0" prefHeight="25.0" prefWidth="229.0" promptText="Pincode">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <Label alignment="TOP_LEFT" layoutX="26.0" layoutY="289.0" prefHeight="23.0" prefWidth="100.0" text="Pincode" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_LEFT" layoutX="521.0" layoutY="75.0" prefHeight="27.0" prefWidth="142.0" text="Add Officials " wrapText="true">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="officialID" layoutX="661.0" layoutY="71.0" prefHeight="25.0" prefWidth="229.0" promptText="Official ID">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <MenuButton fx:id="addedOfficials" layoutX="663.0" layoutY="125.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="225.0" style="-fx-background-color: white; -fx-border-color: #D3D3D3; -fx-border-radius: 4; -fx-background-radius: 4;" text="Added Officials" visible="false">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </MenuButton>
+            <Button layoutX="848.0" layoutY="72.0" mnemonicParsing="false" onAction="#onActionAddOfficials" prefHeight="33.0" prefWidth="42.0" style="-fx-background-color: #A52A2A;" text="Add" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="510.0" layoutY="413.0" mnemonicParsing="false" onAction="#onActionSubmit" prefHeight="38.0" prefWidth="211.0" style="-fx-background-color: #A52A2A;" text="Submit" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <Reflection />
+               </effect>
+            </Button>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </AnchorPane>
+   </center>
+</BorderPane>
