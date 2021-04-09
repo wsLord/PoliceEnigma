@@ -16,6 +16,7 @@ public class loginController
     public TextField username;
     public PasswordField loginpassword;
     public Label loginmsg;
+    public Stage window;
     public void loginOnAction()
     {
         if(!username.getText().isBlank() && !loginpassword.getText().isBlank())
@@ -31,9 +32,9 @@ public class loginController
     public void registerOnAction() throws IOException
     {
         Parent root = FXMLLoader.load(getClass().getResource("../register/register.fxml"));
-        Stage primaryStage=new Stage();
-        primaryStage.setTitle("Register-PoliceEnigma");
-        primaryStage.setScene(new Scene(root, 1138, 575));
-        primaryStage.show();
+        window= (Stage) username.getScene().getWindow();
+        window.setScene(new Scene(root, 1138, 575));
+        window.setTitle("Register-PoliceEnigma");
+        window.show();
     }
 }

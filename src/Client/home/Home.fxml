@@ -36,6 +36,9 @@
                 <MenuItem mnemonicParsing="false" onAction="#onActionProfile" text="Profile" />
                 <MenuItem mnemonicParsing="false" onAction="#onActionLogout" text="Logout" />
               </items>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </MenuButton>
          </children>
       </Pane>

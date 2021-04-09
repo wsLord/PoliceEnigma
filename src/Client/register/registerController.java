@@ -1,10 +1,8 @@
 package Client.register;
 import Server.MongoDB;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import org.bson.Document;
 import com.mongodb.*;
 import com.mongodb.client.MongoCollection;
@@ -23,10 +21,11 @@ import java.util.ArrayList;
 public class registerController
 {
     @FXML
-    public TextField usernametf, age, city, number,state,policeStation,designation;
+    public TextField userName,name,age, city, number,state,policeStationID,designation,aadhaar;
     public PasswordField password,confirmPassword;
-//    public TextArea address;
     public Label registermsg;
+    public ChoiceBox<String> gender;
+    public Slider stars;
 
     Consumer<Document> printConsumer = new Consumer<Document>() {
         @Override
@@ -35,18 +34,26 @@ public class registerController
         }
     };
 
+    public void onActionGender()
+    {
+        String[] choices ={"Male","Female","Transgender"};
+        gender.setItems(FXCollections.observableArrayList(choices));
+    }
     public void registerOnAction()
     {
-        String username = usernametf.getText();
-//        String namev = name.getText();
+        String username = userName.getText();
+        String namev = name.getText();
         Integer agev = Integer.parseInt(age.getText());
         String cityv = city.getText();
         String numberv = number.getText();
         String statev = state.getText();
-        String stationv = policeStation.getText();
+        String stationv = policeStationID.getText();
         String designationv = designation.getText();
         String passwordv = password.getText();
         String cpasswordv = confirmPassword.getText();
+        String genderv = gender.getValue();
+        int starsv = (int) stars.getValue();
+        String aadhaarv = aadhaar.getText();
 
         if(!anyEmpty())
         {
@@ -87,12 +94,9 @@ public class registerController
 
     public boolean anyEmpty()
     {
-        if(!usernametf.getText().isBlank() && !age.getText().isBlank() &&
-                !city.getText().isBlank() && !number.getText().isBlank() &&
-                !state.getText().isBlank() && !policeStation.getText().isBlank() && !designation.getText().isBlank() &&
-                !password.getText().isBlank() && !confirmPassword.getText().isBlank())
-            return false;
-        else
-            return true;
+        return  gender.getValue().isBlank() || userName.getText().isBlank() || name.getText().isBlank() || age.getText().isBlank() ||
+                city.getText().isBlank() || number.getText().isBlank() ||
+                state.getText().isBlank() || policeStationID.getText().isBlank() || designation.getText().isBlank() ||
+                password.getText().isBlank() || confirmPassword.getText().isBlank();
     }
 }
