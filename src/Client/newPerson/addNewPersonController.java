@@ -19,8 +19,8 @@ public class addNewPersonController
     @FXML
     public ImageView personImage;
     public ChoiceBox<String> gender;
-    public TextField name,age,aadhaarNo,pinCode;
-    public TextArea info,address;
+    public TextField name,age,aadhaarNo,contact,city,state;
+    File file;
     public void onActionBack()
     {
 
@@ -28,7 +28,7 @@ public class addNewPersonController
     public void onActionUploadImage() throws FileNotFoundException {
         FileChooser fileChooser = new FileChooser();
         Stage stage=new Stage();
-        File file=fileChooser.showOpenDialog(stage);
+        file=fileChooser.showOpenDialog(stage); //This file has to be added in database
         FileInputStream imageFile=new FileInputStream(file.getAbsolutePath());
         personImage.setImage(new Image(imageFile));
         personImage.setDisable(true);
