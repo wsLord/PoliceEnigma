@@ -36,7 +36,7 @@
       </Pane>
    </top>
    <center>
-      <AnchorPane fx:id="reportedBy" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #EADDCA;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #EADDCA;" BorderPane.alignment="CENTER">
          <children>
             <Label alignment="CENTER" layoutX="478.0" layoutY="5.0" prefHeight="29.0" prefWidth="236.0" text="ADD NEW CASE">
                <font>

@@ -3,15 +3,15 @@ package Common;
 import java.util.List;
 
 public class Person {
-    String pID;
-    String name;
-    int age;
-    String gender;
-    String bio;
-    String aadhar_no;
-    List<String> cases;
-    Contact contact;
-    int stars;
+    private String pID;
+    private String name;
+    private int age;
+    private String gender;
+    private String bio;
+    private String aadhar_no;
+    private List<String> cases;
+    private Contact contact;
+    private int stars;
 
     public Person() {
     }
