@@ -19,11 +19,12 @@ public class Main extends Application {
         primaryStage.show();
     }
     public static void main(String[] args) {
-        launch(args);
 
-        MongoDB server = new MongoDB();
+
+//        MongoDB server = new MongoDB();
         try {
-            server.startServer();
+//            server.startServer();
+            MongoDB.startServer();
 
 
         }
@@ -32,6 +33,6 @@ public class Main extends Application {
             e.printStackTrace();
         }
 
-
+        launch(args);
     }
 }

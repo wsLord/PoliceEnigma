@@ -1,10 +1,9 @@
 package Common;
 
-import java.util.ArrayList;
 import java.util.Vector;
 
 public class Official extends Person{
-    String loginName;
+    String userName;
     String password;
     PoliceStation workingPoliceStation;
     String Designation;
@@ -13,12 +12,12 @@ public class Official extends Person{
     public Official() {
     }
 
-    public String getLoginName() {
-        return loginName;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setLoginName(String loginName) {
-        this.loginName = loginName;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
