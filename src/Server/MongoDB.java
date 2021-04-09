@@ -9,6 +9,8 @@ import org.bson.Document;
 import java.net.UnknownHostException;
 
 public class MongoDB {
+    public static String user;
+
     public static MongoClient mongoClient;
     public static MongoDatabase db;
     public static MongoCollection<Document> personCollection;

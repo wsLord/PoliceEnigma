@@ -49,7 +49,10 @@ public class registerController
     public void registerOnAction() throws IOException {
         String usernamev = userName.getText();
         String namev = name.getText();//
-        Integer agev = Integer.parseInt(age.getText());//
+        Integer agev = 0;
+        if(!age.getText().isBlank()) {
+            agev = Integer.parseInt(age.getText());//
+        }
         String cityv = city.getText();//
         String numberv = number.getText();//
         String statev = state.getText();//
