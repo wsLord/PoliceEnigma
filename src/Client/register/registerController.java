@@ -2,7 +2,11 @@ package Client.register;
 import Server.MongoDB;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import org.bson.Document;
 import com.mongodb.*;
 import com.mongodb.client.MongoCollection;
@@ -13,6 +17,8 @@ import com.mongodb.client.model.Filters;
 import static com.mongodb.client.model.Filters.*;
 import static com.mongodb.client.model.Projections.*;
 import com.mongodb.client.model.Sorts;
+
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.function.Consumer;
 
@@ -40,8 +46,7 @@ public class registerController
         String[] choices ={"Male","Female","Transgender"};
         gender.setItems(FXCollections.observableArrayList(choices));
     }
-    public void registerOnAction()
-    {
+    public void registerOnAction() throws IOException {
         String usernamev = userName.getText();
         String namev = name.getText();//
         Integer agev = Integer.parseInt(age.getText());//
@@ -108,6 +113,13 @@ public class registerController
                                         .append("state", statev));
                         MongoDB.officialCollection.insertOne(newOfficial);
                         System.out.println("Successfully Inserted Official");
+
+                        //Redirecting to login
+                        Parent root = FXMLLoader.load(getClass().getResource("../login/login.fxml"));
+                        Stage window = (Stage) name.getScene().getWindow();
+                        window.setScene(new Scene(root, 600, 475));
+                        window.setTitle("Login-PoliceEnigma");
+                        window.show();
                     }
                 }
             }
@@ -121,7 +133,7 @@ public class registerController
 
     public boolean anyEmpty()
     {
-        return  gender.getValue().isBlank() || userName.getText().isBlank() || name.getText().isBlank() || age.getText().isBlank() ||
+        return  userName.getText().isBlank() || name.getText().isBlank() || age.getText().isBlank() ||
                 city.getText().isBlank() || number.getText().isBlank() ||
                 state.getText().isBlank() || policeStationID.getText().isBlank() || designation.getText().isBlank() ||
                 password.getText().isBlank() || confirmPassword.getText().isBlank() ||aadhaar.getText().isBlank() || aadhaar.getText().isBlank();

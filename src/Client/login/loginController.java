@@ -17,11 +17,15 @@ public class loginController
     public PasswordField loginpassword;
     public Label loginmsg;
     public Stage window;
-    public void loginOnAction()
-    {
+    public void loginOnAction() throws IOException {
         if(!username.getText().isBlank() && !loginpassword.getText().isBlank())
         {
-
+            //IF everything is ok
+            Parent root = FXMLLoader.load(getClass().getResource("../home/home.fxml"));
+            window= (Stage) username.getScene().getWindow();
+            window.setScene(new Scene(root, 1138, 575));
+            window.setTitle("HOME-PoliceEnigma");
+            window.show();
         }
         else
         {

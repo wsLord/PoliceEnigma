@@ -35,7 +35,7 @@
    </left>
    <center>
       <AnchorPane prefHeight="507.0" prefWidth="526.0" style="-fx-background-color: #EADDCA;" BorderPane.alignment="CENTER">
-         <Label fx:id="registermsg" alignment="CENTER" layoutX="210.0" layoutY="73.0" prefHeight="19.0" prefWidth="549.0" style="-fx-background-color: #F88379; -fx-background-radius: 10;" text="msg" textAlignment="CENTER" visible="false">
+         <Label fx:id="registermsg" alignment="CENTER" layoutX="219.0" layoutY="46.0" prefHeight="19.0" prefWidth="549.0" style="-fx-background-color: #F88379; -fx-background-radius: 10;" text="msg" textAlignment="CENTER" visible="false">
             <font>
                <Font size="13.0" />
             </font>
