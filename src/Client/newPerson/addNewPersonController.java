@@ -32,9 +32,12 @@ public class addNewPersonController
     public TextField name,age,aadhaarNo,contact,city,state;
     public Label msg;
     File file;
-    public void onActionBack()
-    {
-
+    public void onActionBack() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../home/home.fxml"));
+        Main.primaryStage.setScene(new Scene(root, 1138, 575));
+        Main.primaryStage.setTitle("HOME-PoliceEnigma");
+        Main.primaryStage.show();
+        System.out.println("back done");
     }
     public void onActionUploadImage() throws FileNotFoundException {
         FileChooser fileChooser = new FileChooser();
