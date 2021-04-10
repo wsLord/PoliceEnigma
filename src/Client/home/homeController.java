@@ -29,9 +29,11 @@ public class homeController
         Main.primaryStage.setTitle("Login-PoliceEnigma");
         Main.primaryStage.show();
     }
-    public void onActionAddCase()
-    {
-
+    public void onActionAddCase() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../newCase/addNewCase.fxml"));
+        Main.primaryStage.setScene(new Scene(root, 600, 475));
+        Main.primaryStage.setTitle("Login-PoliceEnigma");
+        Main.primaryStage.show();
     }
     public void onActionAddPoliceStation()
     {
