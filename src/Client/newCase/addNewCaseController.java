@@ -131,6 +131,7 @@ public class addNewCaseController
         String station= (String) MongoDB.officialCollection.find(eq("username", MongoDB.user)).first().get("stationID");
         Document newCase = new Document("caseID", caseIDv)
                 .append("allowAll",all)
+                .append("isSolved",false)
                 .append("reportedBy", reportedByv)
                 .append("permit",permission)
                 .append("stationId",station)
