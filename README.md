@@ -20,11 +20,8 @@ Enigma for Police - Everything for Police at one place
 <a name="links"></a>
 ## Links:
 
-* Video Link
-  * User Login/Signup portal
-
-* Presentation Link
-  * Highly scalable application i.e. can handle unlimited users, videos, and categories.
+* Video Link: 
+* Presentation Link: 
 
 <a name="depend"></a>
 ## Tech-Stack Used
@@ -35,6 +32,8 @@ Enigma for Police - Everything for Police at one place
 
 <a name="contri"></a>
 ## Contributors
+
+Team Name: Bob The Builders
 
 * [Priyanshu Gupta](github.com/wsLord)
 * [Sanskar Jain](github.com/skj-7)
