@@ -7,10 +7,7 @@ import Server.UniqueIDGenerator;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import org.bson.Document;
 
 import java.io.IOException;
@@ -23,6 +20,7 @@ public class addNewStationController
     public MenuButton addedOfficials;
     public TextField officialID,name,city,state,pincode;
     public TextArea area;
+    public Label msg;
     ArrayList<String>Officials=new ArrayList<String>();
     public void onActionBack()
     {
@@ -40,8 +38,8 @@ public class addNewStationController
             Document tt= MongoDB.officialCollection.find(eq("username", ss)).first();
             if (tt == null) {
                 //no values found
-//                msg.setVisible(true);
-//                msg.setText("No such official exist");
+                msg.setVisible(true);
+                msg.setText("No such official exist");
             }
            else {
                 MenuItem m1 = new MenuItem(ss);
@@ -63,7 +61,7 @@ public class addNewStationController
         areav = area.getText();
 
 //        if (tt != null||aa!=null) {
-        //no values found
+////        no values found
 //                msg.setVisible(true);
 //                msg.setText("Pincode or stationName already present");
 //            System.out.println("Pincode or stationName already present");

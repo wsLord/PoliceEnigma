@@ -1,6 +1,7 @@
 package Client.newCase;
 import Client.Main;
 import Server.MongoDB;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,7 +23,8 @@ public class addNewCaseController
     public TextField tagField,permissionTextField,caseID,reportedBy,suspect,accused;
     public TextArea info;
     public Button addTagButton,addPermissionButton;
-    public CheckBox permissionSelf,permissionStation,permissionEveryone;
+    public ChoiceBox<String> choiceBox;
+    public Label msg;
     ArrayList<String>tags=new ArrayList<String>();
     ArrayList<String> permissionv=new ArrayList<String>();
     public void onActionSelectFiles()
@@ -90,10 +92,17 @@ public class addNewCaseController
 
         }
     }
-    public void onActionSubmit() throws IOException {
-        Boolean all=false;
+    public void onActionChoosePermission()
+    {
+        String[] choices={"Self","Police Station","Everyone"};
+        choiceBox.setItems(FXCollections.observableArrayList(choices));
+    }
 
-        if(permissionEveryone.isFocused())
+    public void onActionSubmit() throws IOException
+    {
+        Boolean all=false;
+        String permission=choiceBox.getValue();
+        if(permission.equals("Everyone"))
         {
             all=true;
         }

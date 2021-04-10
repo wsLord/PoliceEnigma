@@ -48,7 +48,7 @@
                   <Font size="16.0" />
                </font>
             </TextField>
-            <Label alignment="CENTER" layoutX="408.0" layoutY="20.0" prefHeight="29.0" prefWidth="368.0" text="ADD NEW POLICE STATION">
+            <Label alignment="CENTER" layoutX="43.0" layoutY="20.0" prefHeight="29.0" prefWidth="368.0" text="ADD NEW POLICE STATION">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>
@@ -133,6 +133,11 @@
                   <Reflection />
                </effect>
             </Button>
+            <Label fx:id="msg" alignment="CENTER" layoutX="435.0" layoutY="25.0" prefHeight="19.0" prefWidth="627.0" style="-fx-background-color: #F88379; -fx-background-radius: 10;" text="msg" textAlignment="CENTER" visible="false">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
          </children>
          <BorderPane.margin>
             <Insets />
