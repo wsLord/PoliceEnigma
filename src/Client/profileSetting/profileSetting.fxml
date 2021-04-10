@@ -52,12 +52,12 @@
                <Font name="System Bold" size="16.0" />
             </font>
          </Label>
-         <Label layoutX="514.0" layoutY="307.0" text="Designation">
+         <Label layoutX="509.0" layoutY="320.0" text="Designation">
             <font>
                <Font name="System Bold" size="15.0" />
             </font>
          </Label>
-         <Label layoutX="513.0" layoutY="233.0" prefHeight="50.0" prefWidth="77.0" text="Police Station ID" wrapText="true">
+         <Label layoutX="513.0" layoutY="256.0" prefHeight="50.0" prefWidth="77.0" text="Police Station ID" wrapText="true">
             <font>
                <Font name="System Bold" size="15.0" />
             </font>
@@ -88,12 +88,12 @@
                <Font size="14.0" />
             </font>
          </TextField>
-         <TextField fx:id="designation" editable="false" layoutX="605.0" layoutY="300.0" prefHeight="30.0" prefWidth="295.0" promptText="Designation">
+         <TextField fx:id="designation" editable="false" layoutX="605.0" layoutY="316.0" prefHeight="30.0" prefWidth="295.0" promptText="Designation">
             <font>
                <Font size="14.0" />
             </font>
          </TextField>
-         <TextField fx:id="policeStationID" editable="false" layoutX="607.0" layoutY="243.0" prefHeight="29.0" prefWidth="291.0" promptText="Police station ID">
+         <TextField fx:id="policeStationID" editable="false" layoutX="607.0" layoutY="266.0" prefHeight="29.0" prefWidth="291.0" promptText="Police station ID">
             <font>
                <Font size="14.0" />
             </font>
@@ -103,7 +103,7 @@
                <Font name="System Bold" size="16.0" />
             </font>
          </Label>
-         <Label layoutX="514.0" layoutY="178.0" text="State">
+         <Label layoutX="515.0" layoutY="221.0" text="State">
             <font>
                <Font name="System Bold" size="16.0" />
             </font>
@@ -118,12 +118,12 @@
                <Font size="15.0" />
             </font>
          </TextField>
-         <TextField fx:id="state" editable="false" layoutX="607.0" layoutY="173.0" prefHeight="36.0" prefWidth="291.0" promptText="State">
+         <TextField fx:id="state" editable="false" layoutX="607.0" layoutY="216.0" prefHeight="36.0" prefWidth="291.0" promptText="State">
             <font>
                <Font size="15.0" />
             </font>
          </TextField>
-         <TextField fx:id="number" editable="false" layoutX="186.0" layoutY="315.0" prefHeight="32.0" prefWidth="291.0" promptText="Contact Number">
+         <TextField fx:id="phone" editable="false" layoutX="186.0" layoutY="315.0" prefHeight="32.0" prefWidth="291.0" promptText="Contact Number">
             <font>
                <Font size="15.0" />
             </font>
@@ -153,8 +153,8 @@
                <Font name="System Bold" size="16.0" />
             </font>
          </Label>
-         <Slider fx:id="stars" blockIncrement="5.0" disable="true" layoutX="608.0" layoutY="347.0" majorTickUnit="1.0" max="5.0" minorTickCount="0" prefHeight="37.0" prefWidth="289.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
-         <Label layoutX="515.0" layoutY="353.0" text="Stars">
+         <Slider fx:id="stars" blockIncrement="5.0" disable="true" layoutX="608.0" layoutY="360.0" majorTickUnit="1.0" max="5.0" minorTickCount="0" prefHeight="37.0" prefWidth="289.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+         <Label layoutX="516.0" layoutY="366.0" text="Stars">
             <font>
                <Font name="System Bold" size="16.0" />
             </font>
@@ -233,6 +233,16 @@
                <Reflection />
             </effect>
          </Text>
+         <Label layoutX="512.0" layoutY="175.0" prefHeight="33.0" prefWidth="46.0" text="PIN">
+            <font>
+               <Font name="System Bold" size="16.0" />
+            </font>
+         </Label>
+         <TextField fx:id="pincode" editable="false" layoutX="607.0" layoutY="173.0" prefHeight="36.0" prefWidth="291.0" promptText="PIN Code">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </TextField>
          <BorderPane.margin>
             <Insets />
          </BorderPane.margin>

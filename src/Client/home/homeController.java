@@ -1,5 +1,6 @@
 package Client.home;
 import Client.Main;
+import Client.profileSetting.profileSettingController;
 import Server.MongoDB;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,9 +18,14 @@ public class homeController
     {
 
     }
-    public void onActionProfile()
-    {
-
+    public void onActionProfile() throws IOException {
+        FXMLLoader loader = FXMLLoader.load(getClass().getResource("../profileSetting/profileSetting.fxml"));
+        Parent root = (Parent) loader.load();
+        profileSettingController psc = loader.getController();
+        psc.SetAndDisplay();
+        Main.primaryStage.setScene(new Scene(root, 600, 475));
+        Main.primaryStage.setTitle("Profile Settings - PoliceEnigma");
+        Main.primaryStage.show();
     }
     public void onActionLogout() throws IOException {
         Stage window = new Stage();
