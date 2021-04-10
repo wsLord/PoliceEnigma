@@ -108,9 +108,8 @@ public class registerController
 
                         System.out.println(id);
                         Document newOfficial = new Document("_id", id)
-                                .append("aadhaarId",aadhaarv)
                                 .append("username",usernamev)
-                                .append("stationId",stationv)
+                                .append("stationID",stationv)
                                 .append("designation",designationv)
                                 .append("password", hashed)
                                 .append("stars",starsv);

@@ -79,7 +79,7 @@
                   <Font name="System Bold" size="17.0" />
                </font>
             </Label>
-            <TextField fx:id="contact" editable="false" layoutX="111.0" layoutY="340.0" prefHeight="33.0" prefWidth="201.0" promptText="Contact">
+            <TextField fx:id="phone" editable="false" layoutX="111.0" layoutY="340.0" prefHeight="33.0" prefWidth="201.0" promptText="Contact">
                <font>
                   <Font size="15.0" />
                </font>

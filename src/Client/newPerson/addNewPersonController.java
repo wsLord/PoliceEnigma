@@ -35,21 +35,21 @@ public class addNewPersonController
     public void onActionBack() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../home/home.fxml"));
         Main.primaryStage.setScene(new Scene(root, 1138, 575));
-        Main.primaryStage.setTitle("HOME-PoliceEnigma");
+        Main.primaryStage.setTitle("HOME - PoliceEnigma");
         Main.primaryStage.show();
         System.out.println("back done");
     }
     public void onActionUploadImage() throws FileNotFoundException {
         FileChooser fileChooser = new FileChooser();
-        Stage stage=new Stage();
-        file=fileChooser.showOpenDialog(stage); //This file has to be added in database
-        FileInputStream imageFile=new FileInputStream(file.getAbsolutePath());
+        Stage stage = new Stage();
+        file = fileChooser.showOpenDialog(stage); //This file has to be added in database
+        FileInputStream imageFile = new FileInputStream(file.getAbsolutePath());
         personImage.setImage(new Image(imageFile));
         personImage.setDisable(true);
     }
     public void onActionGender()
     {
-        String[] choices ={"Male","Female","Transgender"};
+        String[] choices = {"Male","Female","Transgender"};
         gender.setItems(FXCollections.observableArrayList(choices));
     }
     public void onActionSubmit() throws IOException {
@@ -68,31 +68,30 @@ public class addNewPersonController
 
         if(!anyEmpty())
         {
-
             Document tuser = MongoDB.personCollection.find(eq("aadhaarId", aadhaarv)).first();
 
             if (tuser != null) {
                 //no values found
-                    msg.setVisible(true);
-                    msg.setText("The aadhaar id is already present");
-            } else {
-
-
-                        msg.setVisible(false);
+                msg.setVisible(true);
+                msg.setText("The aadhaar id is already present");
+            }
+            else {
+                msg.setVisible(false);
                 Document newPerson = new Document("aadhaarId", aadhaarv)
                         .append("name", namev)
                         .append("age", agev)
                         .append("gender", genderv)
                         .append("contact", new Document("phone", numberv)
                                 .append("city", cityv)
-                                .append("state", statev));
+                                .append("state", statev)
+                                .append("PIN", pincodev);
 
                 MongoDB.personCollection.insertOne(newPerson);
                 System.out.println("Successfully Inserted Person");
                 //Redirecting to Home
                 Parent root = FXMLLoader.load(getClass().getResource("../home/home.fxml"));
                 Main.primaryStage.setScene(new Scene(root, 1138, 575));
-                Main.primaryStage.setTitle("HOME-PoliceEnigma");
+                Main.primaryStage.setTitle("HOME - PoliceEnigma");
                 Main.primaryStage.show();
             }
         }
