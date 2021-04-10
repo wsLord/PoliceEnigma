@@ -1,16 +1,23 @@
 package Client.search;
+import Client.viewPerson.viewPersonController;
 import Server.MongoDB;
 import com.mongodb.client.FindIterable;
+import javafx.concurrent.Task;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Cursor;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 import org.bson.Document;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -157,6 +164,20 @@ public class searchController
                         @Override
                         public void handle(MouseEvent mouseEvent) {
                             //Open view profile page in new window
+                            Task task = new Task<Void>() {
+                                @Override public Void call() throws InterruptedException, IOException {
+                                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../viewPerson/viewPersonControllerfxml"));
+                                    Parent root = (Parent) loader.load();
+                                    viewPersonController vpc = loader.getController();
+                                    vpc.checkTypeAndSet(r.getObjectId("_id"));
+                                    Stage window = new Stage();
+                                    window.setScene(new Scene(root, 600, 475));
+                                    window.setTitle("Person Information - PoliceEnigma");
+                                    window.show();
+
+                                    return null;
+                                }
+                            };
                         }
                     });
                     pane.getChildren().addAll(lname,Name,laadhaar,Aadhaar,btn);
