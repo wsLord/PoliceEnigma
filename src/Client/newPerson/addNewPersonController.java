@@ -1,5 +1,6 @@
 package Client.newPerson;
 
+import Server.MongoDB;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
@@ -9,10 +10,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.bson.Document;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+
+import static com.mongodb.client.model.Filters.eq;
 
 public class addNewPersonController
 {
@@ -41,5 +45,52 @@ public class addNewPersonController
     public void onActionSubmit()
     {
 
+        String namev = name.getText();//
+        Integer agev = 0;
+        if(!age.getText().isBlank()) {
+            agev = Integer.parseInt(age.getText());//
+        }
+        String cityv = city.getText();//
+        String numberv = contact.getText();//
+        String statev = state.getText();//
+
+        String genderv = gender.getValue();//
+        String aadhaarv = aadhaarNo.getText();//
+
+        if(!anyEmpty())
+        {
+
+            Document tuser = MongoDB.personCollection.find(eq("aadhaarId", aadhaarv)).first();
+
+            if (tuser != null) {
+                //no values found
+//                    registermsg.setVisible(true);
+//                    registermsg.setText("The aadhaar id is already present");
+            } else {
+
+
+//                        registermsg.setVisible(false);
+                Document newPerson = new Document("aadhaarId", aadhaarv)
+                        .append("name", namev)
+                        .append("age", agev)
+                        .append("gender", genderv)
+                        .append("contact", new Document("phone", numberv)
+                                .append("city", cityv)
+                                .append("state", statev));
+
+                MongoDB.personCollection.insertOne(newPerson);
+                System.out.println("Successfully Inserted Person");
+            }
+        }
+        else
+        {
+
+        }
+    }
+    public boolean anyEmpty()
+    {
+        return  name.getText().isBlank() || age.getText().isBlank() ||
+                city.getText().isBlank() || contact.getText().isBlank() ||
+                state.getText().isBlank() || aadhaarNo.getText().isBlank() ||gender.getValue().isBlank();
     }
 }
