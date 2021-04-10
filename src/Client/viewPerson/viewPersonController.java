@@ -27,7 +27,8 @@ public class viewPersonController
     public AnchorPane officialPane;
     public HBox casesPane;
     public Button edit,submit,delete;
-    public TextField name,age,aadhaar, phone,gender,city,state,pincode,username,designation,stationID;
+    public TextField name,age,aadhaar, phone,gender,city,state,pincode,username,designation;
+    public TextField stationCity,stationID,stationPincode,stationState,stationName; //Station Details
     public Label msg;
     public Slider stars;
 
