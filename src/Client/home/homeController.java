@@ -50,15 +50,7 @@ public class homeController
             System.out.println("Not admin go back");
         }
     }
-    public void onActionCurrentCases()
-    {
-
-    }
-    public void onActionSolvedCases()
-    {
-
-    }
-    public void onActionUnsolvedCases()
+    public void onActionShowCases()
     {
 
     }

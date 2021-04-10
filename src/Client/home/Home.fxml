@@ -96,29 +96,7 @@
                   <Reflection />
                </effect>
             </Text>
-            <Button layoutX="29.0" layoutY="343.0" mnemonicParsing="false" onAction="#onActionCurrentCases" prefHeight="114.0" prefWidth="125.0" style="-fx-background-color: #5C4033;" text="Current" textFill="#fbf3f3" wrapText="true">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <effect>
-                  <Reflection bottomOpacity="0.1" fraction="0.36" topOpacity="0.72" />
-               </effect>
-            </Button>
-            <Button layoutX="219.0" layoutY="343.0" mnemonicParsing="false" onAction="#onActionSolvedCases" prefHeight="114.0" prefWidth="125.0" style="-fx-background-color: #5C4033;" text="Solved" textFill="#fbf3f3" wrapText="true">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <effect>
-                  <Reflection bottomOpacity="0.1" fraction="0.36" topOpacity="0.72" />
-               </effect>
-            </Button>
-            <Button layoutX="400.0" layoutY="343.0" mnemonicParsing="false" onAction="#onActionUnsolvedCases" prefHeight="114.0" prefWidth="125.0" style="-fx-background-color: #5C4033;" text="Unsolved" textFill="#fbf3f3" wrapText="true">
+            <Button layoutX="29.0" layoutY="343.0" mnemonicParsing="false" onAction="#onActionShowCases" prefHeight="114.0" prefWidth="125.0" style="-fx-background-color: #5C4033;" text="List Of Cases Register" textAlignment="CENTER" textFill="#fbf3f3" wrapText="true">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
