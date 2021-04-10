@@ -1,12 +1,14 @@
 package Client.home;
 import Client.Main;
 import Client.profileSetting.profileSettingController;
+import Client.viewPerson.viewPersonController;
 import Server.MongoDB;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -19,17 +21,26 @@ public class homeController
 
     }
     public void onActionProfile() throws IOException {
-        FXMLLoader loader = FXMLLoader.load(getClass().getResource("../profileSetting/profileSetting.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../profileSetting/profileSetting.fxml"));
         Parent root = (Parent) loader.load();
-        profileSettingController psc = loader.getController();
+        profileSettingController psc = loader.<profileSettingController>getController();
         psc.SetAndDisplay();
         Main.primaryStage.setScene(new Scene(root, 600, 475));
         Main.primaryStage.setTitle("Profile Settings - PoliceEnigma");
         Main.primaryStage.show();
     }
     public void onActionLogout() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("./LogoutPopUp.fxml"));
         Stage window = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("./LogoutPopUp.fxml"));
+        Parent root = (Parent) loader.load();
+        LogoutPopUpController lpuc = loader.getController();
+        lpuc.setStage(window);
+
+        // Specifies the modality for new window.
+        window.initModality(Modality.WINDOW_MODAL);
+
+        // Specifies the owner Window (parent) for new window
+        window.initOwner(Main.primaryStage);
         window.setScene(new Scene(root, 600, 475));
         window.setTitle("Log Out?");
         window.show();
