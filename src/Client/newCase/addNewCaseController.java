@@ -16,6 +16,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.mongodb.client.model.Filters.eq;
+
 public class addNewCaseController
 {
     @FXML
@@ -27,6 +29,8 @@ public class addNewCaseController
     public Label msg;
     ArrayList<String>tags=new ArrayList<String>();
     ArrayList<String> permissionv=new ArrayList<String>();
+
+
     public void onActionSelectFiles()
     {
         FileChooser fileChooser = new FileChooser();
@@ -84,7 +88,11 @@ public class addNewCaseController
             selectedPermissions.setVisible(true);
             selectedPermissions.getItems().add(m1);
             permissionTextField.setText("");
-            permissionv.add(ss);
+
+
+                permissionv.add(ss);
+
+
 
 
             permissionTextField.setPromptText("Add person");
@@ -94,6 +102,7 @@ public class addNewCaseController
     }
     public void onActionChoosePermission()
     {
+
         String[] choices={"Self","Police Station","Everyone"};
         choiceBox.setItems(FXCollections.observableArrayList(choices));
     }
@@ -102,6 +111,13 @@ public class addNewCaseController
     {
         Boolean all=false;
         String permission=choiceBox.getValue();
+        if(permission.equals("Self"))
+        {
+            permissionv.clear();
+        }
+
+        permissionv.add(MongoDB.user);
+
         if(permission.equals("Everyone"))
         {
             all=true;
@@ -112,17 +128,19 @@ public class addNewCaseController
         suspectv=suspect.getText();
         accusedv=accused.getText();
         infor=info.getText();
-
-        Document newPerson = new Document("caseID", caseIDv)
+        String station= (String) MongoDB.officialCollection.find(eq("username", MongoDB.user)).first().get("stationID");
+        Document newCase = new Document("caseID", caseIDv)
                 .append("allowAll",all)
                 .append("reportedBy", reportedByv)
+                .append("permit",permission)
+                .append("stationId",station)
                 .append("suspect", suspectv)
                 .append("accused", accusedv)
                 .append("info",infor)
                 .append("Tags", tags)
-                .append("permission",permissionv);
+                .append("permissionsOfIndividuals",permissionv);
 
-        MongoDB.casesCollection.insertOne(newPerson);
+        MongoDB.casesCollection.insertOne(newCase);
         System.out.println("Successfully Inserted Case");
         Parent root = FXMLLoader.load(getClass().getResource("../home/home.fxml"));
         Main.primaryStage.setScene(new Scene(root, 1138, 575));
