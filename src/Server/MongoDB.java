@@ -4,6 +4,7 @@ import com.mongodb.DBCollection;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import io.github.cdimascio.dotenv.Dotenv;
 import org.bson.Document;
 
 import java.net.UnknownHostException;
@@ -20,7 +21,11 @@ public class MongoDB {
 
     public static void startServer() throws UnknownHostException
     {
-        mongoClient = new MongoClient( "localhost" , 27017 );
+        Dotenv dotenv = Dotenv.load();
+        String host = dotenv.get("host");
+        String port = dotenv.get("port");
+
+        mongoClient = new MongoClient(host, Integer.parseInt(port));
         System.out.println("server connection successfully done");
 
         //Connecting with database
