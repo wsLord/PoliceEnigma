@@ -10,6 +10,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.bson.Document;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.IOException;
 
@@ -29,10 +30,11 @@ public class loginController
             String usernamev = username.getText();
             String passwordv = loginpassword.getText();
             Document tuserName = MongoDB.officialCollection.find(eq("username", usernamev)).first();
-            if(tuserName!=null)
+            if(tuserName != null)
             {
-                String pass=tuserName.getString("password");
-                if(pass.equals(passwordv))
+                String hashpass = tuserName.getString("password");
+                // Check that an unencrypted password matches
+                if (BCrypt.checkpw(passwordv, hashpass))
                 {
                     loginmsg.setVisible(false);
                     MongoDB.user = usernamev;

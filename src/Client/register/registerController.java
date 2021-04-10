@@ -18,6 +18,7 @@ import com.mongodb.client.model.Filters;
 import static com.mongodb.client.model.Filters.*;
 import static com.mongodb.client.model.Projections.*;
 import com.mongodb.client.model.Sorts;
+import org.mindrot.jbcrypt.*;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -89,6 +90,10 @@ public class registerController
                     }
                     else {
                         registermsg.setVisible(false);
+
+                        // Hashing the password
+                        String hashed = BCrypt.hashpw(passwordv, BCrypt.gensalt(12));
+
                         Document newPerson = new Document("aadhaarId", aadhaarv)
                                 .append("name", namev)
                                 .append("age", agev)
@@ -107,14 +112,9 @@ public class registerController
                                 .append("username",usernamev)
                                 .append("stationId",stationv)
                                 .append("designation",designationv)
-                                .append("password",passwordv)
-                                .append("name", namev)
-                                .append("age", agev)
-                                .append("gender", genderv)
-                                .append("stars",starsv)
-                                .append("contact", new Document("phone", numberv)
-                                        .append("city", cityv)
-                                        .append("state", statev));
+                                .append("password", hashed)
+                                .append("stars",starsv);
+
                         MongoDB.officialCollection.insertOne(newOfficial);
                         System.out.println("Successfully Inserted Official");
 
