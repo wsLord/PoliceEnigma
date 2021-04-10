@@ -1,9 +1,13 @@
 package Client.home;
+import Client.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+
 public class homeController
 {
     public void onActionSetting()
@@ -18,14 +22,12 @@ public class homeController
     {
 
     }
-    public void onActionAddPerson()
-    {
+    public void onActionAddPerson() throws IOException {
         //Redirecting to Add Person
-//        Parent root = FXMLLoader.load(getClass().getResource("../newPerson/add"));
-//        Stage window = (Stage) name.getScene().getWindow();
-//        window.setScene(new Scene(root, 600, 475));
-//        window.setTitle("Login-PoliceEnigma");
-//        window.show();
+        Parent root = FXMLLoader.load(getClass().getResource("../newPerson/addNewPerson.fxml"));
+        Main.primaryStage.setScene(new Scene(root, 600, 475));
+        Main.primaryStage.setTitle("Login-PoliceEnigma");
+        Main.primaryStage.show();
     }
     public void onActionAddCase()
     {

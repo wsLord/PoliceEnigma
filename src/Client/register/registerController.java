@@ -1,4 +1,5 @@
 package Client.register;
+import Client.Main;
 import Server.MongoDB;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -119,10 +120,10 @@ public class registerController
 
                         //Redirecting to login
                         Parent root = FXMLLoader.load(getClass().getResource("../login/login.fxml"));
-                        Stage window = (Stage) name.getScene().getWindow();
-                        window.setScene(new Scene(root, 600, 475));
-                        window.setTitle("Login-PoliceEnigma");
-                        window.show();
+//                        Stage window = (Stage) name.getScene().getWindow();
+                        Main.primaryStage.setScene(new Scene(root, 600, 475));
+                        Main.primaryStage.setTitle("Login-PoliceEnigma");
+                        Main.primaryStage.show();
                     }
                 }
             }

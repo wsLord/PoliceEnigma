@@ -1,4 +1,5 @@
 package Client.login;
+import Client.Main;
 import Server.MongoDB;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +21,7 @@ public class loginController
     public TextField username;
     public PasswordField loginpassword;
     public Label loginmsg;
-    public Stage window;
+
     public void loginOnAction() throws IOException {
         if(!username.getText().isBlank() && !loginpassword.getText().isBlank())
         {
@@ -34,12 +35,11 @@ public class loginController
                 if(pass.equals(passwordv))
                 {
                     loginmsg.setVisible(false);
-                    MongoDB.user=usernamev;
+                    MongoDB.user = usernamev;
                     Parent root = FXMLLoader.load(getClass().getResource("../home/home.fxml"));
-                    window= (Stage) username.getScene().getWindow();
-                    window.setScene(new Scene(root, 1138, 575));
-                    window.setTitle("HOME-PoliceEnigma");
-                    window.show();
+                    Main.primaryStage.setScene(new Scene(root, 1138, 575));
+                    Main.primaryStage.setTitle("HOME-PoliceEnigma");
+                    Main.primaryStage.show();
                 }
                 else
                 {
@@ -63,9 +63,8 @@ public class loginController
     public void registerOnAction() throws IOException
     {
         Parent root = FXMLLoader.load(getClass().getResource("../register/register.fxml"));
-        window = (Stage) username.getScene().getWindow();
-        window.setScene(new Scene(root, 1138, 575));
-        window.setTitle("Register-PoliceEnigma");
-        window.show();
+        Main.primaryStage.setScene(new Scene(root, 1138, 575));
+        Main.primaryStage.setTitle("Register-PoliceEnigma");
+        Main.primaryStage.show();
     }
 }
