@@ -1,5 +1,6 @@
 package Client.home;
 import Client.Main;
+import Server.MongoDB;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -35,9 +36,17 @@ public class homeController
         Main.primaryStage.setTitle("Login-PoliceEnigma");
         Main.primaryStage.show();
     }
-    public void onActionAddPoliceStation()
-    {
-
+    public void onActionAddPoliceStation() throws IOException {
+        if(MongoDB.user.equals("admin")) {
+            Parent root = FXMLLoader.load(getClass().getResource("../newStation/addNewStation.fxml"));
+            Main.primaryStage.setScene(new Scene(root, 600, 475));
+            Main.primaryStage.setTitle("New Station");
+            Main.primaryStage.show();
+        }
+        else
+        {
+            System.out.println("Not admin go back");
+        }
     }
     public void onActionCurrentCases()
     {
