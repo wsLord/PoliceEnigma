@@ -1,4 +1,5 @@
 package Client.newCase;
+import Client.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -7,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser;
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 public class addNewCaseController
@@ -29,9 +31,11 @@ public class addNewCaseController
             selected.getItems().add(m1);
         }
     }
-    public void onActionBack()
-    {
-
+    public void onActionBack() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../home/home.fxml"));
+        Main.primaryStage.setScene(new Scene(root, 1138, 575));
+        Main.primaryStage.setTitle("HOME-PoliceEnigma");
+        Main.primaryStage.show();
     }
     public void onActionAddPerson()
     {
