@@ -21,28 +21,31 @@ public class homeController
     {
 
     }
-    public void onActionLogout()
-    {
-
+    public void onActionLogout() throws IOException {
+        Stage window = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("./LogoutPopUp.fxml"));
+        window.setScene(new Scene(root, 600, 475));
+        window.setTitle("Log Out?");
+        window.show();
     }
     public void onActionAddPerson() throws IOException {
         //Redirecting to Add Person
         Parent root = FXMLLoader.load(getClass().getResource("../newPerson/addNewPerson.fxml"));
         Main.primaryStage.setScene(new Scene(root, 600, 475));
-        Main.primaryStage.setTitle("Login-PoliceEnigma");
+        Main.primaryStage.setTitle("New Person - PoliceEnigma");
         Main.primaryStage.show();
     }
     public void onActionAddCase() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../newCase/addNewCase.fxml"));
         Main.primaryStage.setScene(new Scene(root, 600, 475));
-        Main.primaryStage.setTitle("Login-PoliceEnigma");
+        Main.primaryStage.setTitle("New Case - PoliceEnigma");
         Main.primaryStage.show();
     }
     public void onActionAddPoliceStation() throws IOException {
         if(MongoDB.user.equals("admin")) {
             Parent root = FXMLLoader.load(getClass().getResource("../newStation/addNewStation.fxml"));
             Main.primaryStage.setScene(new Scene(root, 600, 475));
-            Main.primaryStage.setTitle("New Station");
+            Main.primaryStage.setTitle("New Station - PoliceEnigma");
             Main.primaryStage.show();
         }
         else
@@ -54,9 +57,11 @@ public class homeController
     {
 
     }
-    public void onActionSearch()
-    {
-
+    public void onActionSearch() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../search/search.fxml"));
+        Main.primaryStage.setScene(new Scene(root, 600, 475));
+        Main.primaryStage.setTitle("Search - PoliceEnigma");
+        Main.primaryStage.show();
     }
     public void onActionOCRScan()
     {

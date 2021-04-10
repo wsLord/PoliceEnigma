@@ -166,7 +166,7 @@ public class searchController
                             //Open view profile page in new window
                             Task task = new Task<Void>() {
                                 @Override public Void call() throws InterruptedException, IOException {
-                                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../viewPerson/viewPersonControllerfxml"));
+                                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../viewPerson/viewPersonController.fxml"));
                                     Parent root = (Parent) loader.load();
                                     viewPersonController vpc = loader.getController();
                                     vpc.checkTypeAndSet(r.getObjectId("_id"));
