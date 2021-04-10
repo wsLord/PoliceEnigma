@@ -52,7 +52,7 @@
                <Font name="System Bold" size="16.0" />
             </font>
          </Label>
-         <Label layoutX="509.0" layoutY="320.0" text="Designation">
+         <Label layoutX="515.0" layoutY="320.0" text="Designation">
             <font>
                <Font name="System Bold" size="15.0" />
             </font>
@@ -88,7 +88,7 @@
                <Font size="14.0" />
             </font>
          </TextField>
-         <TextField fx:id="designation" editable="false" layoutX="605.0" layoutY="316.0" prefHeight="30.0" prefWidth="295.0" promptText="Designation">
+         <TextField fx:id="designation" editable="false" layoutX="610.0" layoutY="316.0" prefHeight="30.0" prefWidth="287.0" promptText="Designation">
             <font>
                <Font size="14.0" />
             </font>
@@ -118,7 +118,7 @@
                <Font size="15.0" />
             </font>
          </TextField>
-         <TextField fx:id="state" editable="false" layoutX="607.0" layoutY="216.0" prefHeight="36.0" prefWidth="291.0" promptText="State">
+         <TextField fx:id="state" editable="false" layoutX="607.0" layoutY="218.0" prefHeight="30.0" prefWidth="291.0" promptText="State">
             <font>
                <Font size="15.0" />
             </font>
@@ -233,12 +233,12 @@
                <Reflection />
             </effect>
          </Text>
-         <Label layoutX="512.0" layoutY="175.0" prefHeight="33.0" prefWidth="46.0" text="PIN">
+         <Label layoutX="512.0" layoutY="175.0" prefHeight="33.0" prefWidth="74.0" text="Pincode">
             <font>
                <Font name="System Bold" size="16.0" />
             </font>
          </Label>
-         <TextField fx:id="pincode" editable="false" layoutX="607.0" layoutY="173.0" prefHeight="36.0" prefWidth="291.0" promptText="PIN Code">
+         <TextField fx:id="pincode" editable="false" layoutX="607.0" layoutY="173.0" prefHeight="31.0" prefWidth="291.0" promptText="Pincode">
             <font>
                <Font size="15.0" />
             </font>
