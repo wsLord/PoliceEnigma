@@ -1,8 +1,12 @@
 package Client.newPerson;
 
+import Client.Main;
 import Server.MongoDB;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -15,6 +19,7 @@ import org.bson.Document;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import static com.mongodb.client.model.Filters.eq;
 
@@ -42,8 +47,7 @@ public class addNewPersonController
         String[] choices ={"Male","Female","Transgender"};
         gender.setItems(FXCollections.observableArrayList(choices));
     }
-    public void onActionSubmit()
-    {
+    public void onActionSubmit() throws IOException {
 
         String namev = name.getText();//
         Integer agev = 0;
@@ -80,6 +84,11 @@ public class addNewPersonController
 
                 MongoDB.personCollection.insertOne(newPerson);
                 System.out.println("Successfully Inserted Person");
+                //Redirecting to login
+                Parent root = FXMLLoader.load(getClass().getResource("../home/home.fxml"));
+                Main.primaryStage.setScene(new Scene(root, 1138, 575));
+                Main.primaryStage.setTitle("HOME-PoliceEnigma");
+                Main.primaryStage.show();
             }
         }
         else
