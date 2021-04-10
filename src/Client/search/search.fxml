@@ -42,15 +42,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </CheckBox>
-                  <CheckBox fx:id="station" layoutX="17.0" layoutY="100.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="125.0" text="Police Station">
-                     <font>
-                        <Font name="System Bold Italic" size="15.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </CheckBox>
-                  <CheckBox fx:id="pincode" layoutX="17.0" layoutY="133.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="125.0" text="Pincode">
+                  <CheckBox fx:id="station" layoutX="17.0" layoutY="100.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="125.0" text="Police Station ID" wrapText="true">
                      <font>
                         <Font name="System Bold Italic" size="15.0" />
                      </font>
