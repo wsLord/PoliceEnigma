@@ -1,5 +1,6 @@
 package Client.newCase;
 import Client.Main;
+import Server.MongoDB;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -7,8 +8,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser;
+import org.bson.Document;
+
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class addNewCaseController
@@ -19,6 +23,8 @@ public class addNewCaseController
     public TextArea info;
     public Button addTagButton,addPermissionButton;
     public CheckBox permissionSelf,permissionStation,permissionEveryone;
+    ArrayList<String>tags=new ArrayList<String>();
+    ArrayList<String> permissionv=new ArrayList<String>();
     public void onActionSelectFiles()
     {
         FileChooser fileChooser = new FileChooser();
@@ -54,30 +60,64 @@ public class addNewCaseController
         }
         else
         {
-            MenuItem m1=new MenuItem(tagField.getText());
+            String ss=tagField.getText();
+            MenuItem m1=new MenuItem(ss);
             selectedTags.setVisible(true);
             selectedTags.getItems().add(m1);
+            tags.add(ss);
             tagField.setText("");
             tagField.setPromptText("Add tag");
         }
     }
-    public void onActionAddPermission()
-    {
+    public void onActionAddPermission() throws IOException {
+
         if(permissionTextField.getText().equals(""))
         {
             permissionTextField.setPromptText("Required**");
         }
         else
         {
-            MenuItem m1=new MenuItem(permissionTextField.getText());
+            String ss=permissionTextField.getText();
+            MenuItem m1=new MenuItem(ss);
             selectedPermissions.setVisible(true);
             selectedPermissions.getItems().add(m1);
             permissionTextField.setText("");
+            permissionv.add(ss);
+
+
             permissionTextField.setPromptText("Add person");
+
+
         }
     }
-    public void onActionSubmit()
-    {
+    public void onActionSubmit() throws IOException {
+        Boolean all=false;
 
+        if(permissionEveryone.isFocused())
+        {
+            all=true;
+        }
+        String caseIDv,reportedByv,suspectv,accusedv,infor;
+        caseIDv=caseID.getText();
+        reportedByv=reportedBy.getText();
+        suspectv=suspect.getText();
+        accusedv=accused.getText();
+        infor=info.getText();
+
+        Document newPerson = new Document("caseID", caseIDv)
+                .append("allowAll",all)
+                .append("reportedBy", reportedByv)
+                .append("suspect", suspectv)
+                .append("accused", accusedv)
+                .append("info",infor)
+                .append("Tags", tags)
+                .append("permission",permissionv);
+
+        MongoDB.casesCollection.insertOne(newPerson);
+        System.out.println("Successfully Inserted Case");
+        Parent root = FXMLLoader.load(getClass().getResource("../home/home.fxml"));
+        Main.primaryStage.setScene(new Scene(root, 1138, 575));
+        Main.primaryStage.setTitle("HOME-PoliceEnigma");
+        Main.primaryStage.show();
     }
 }
