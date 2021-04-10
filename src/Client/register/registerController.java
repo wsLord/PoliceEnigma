@@ -89,40 +89,50 @@ public class registerController
                         registermsg.setText("the username is already in use");
                     }
                     else {
+
                         registermsg.setVisible(false);
+                        Document cc = MongoDB.pstationCollection.find(eq("stationID", stationv)).first();
+                        if(cc != null)
+                        {
+                            registermsg.setVisible(true);
+                            registermsg.setText("the police station is not present");
+                        }
+                        else {
+                            // Hashing the password
+                            String hashed = BCrypt.hashpw(passwordv, BCrypt.gensalt(12));
 
-                        // Hashing the password
-                        String hashed = BCrypt.hashpw(passwordv, BCrypt.gensalt(12));
+                            Document newPerson = new Document("aadhaarId", aadhaarv)
+                                    .append("name", namev)
+                                    .append("age", agev)
+                                    .append("gender", genderv)
+                                    .append("contact", new Document("phone", numberv)
+                                            .append("city", cityv)
+                                            .append("state", statev));
 
-                        Document newPerson = new Document("aadhaarId", aadhaarv)
-                                .append("name", namev)
-                                .append("age", agev)
-                                .append("gender", genderv)
-                                .append("contact", new Document("phone", numberv)
-                                        .append("city", cityv)
-                                        .append("state", statev));
+                            MongoDB.personCollection.insertOne(newPerson);
+                            System.out.println("Successfully Inserted Person");
+                            ObjectId id = MongoDB.personCollection.find(eq("aadhaarId", aadhaarv)).first().getObjectId("_id");
 
-                        MongoDB.personCollection.insertOne(newPerson);
-                        System.out.println("Successfully Inserted Person");
-                        ObjectId id = MongoDB.personCollection.find(eq("aadhaarId", aadhaarv)).first().getObjectId("_id");
+                            System.out.println(id);
+                            Document newOfficial = new Document("_id", id)
+                                    .append("username", usernamev)
+                                    .append("stationID", stationv)
+                                    .append("designation", designationv)
+                                    .append("password", hashed)
+                                    .append("stars", starsv);
 
-                        System.out.println(id);
-                        Document newOfficial = new Document("_id", id)
-                                .append("username",usernamev)
-                                .append("stationID",stationv)
-                                .append("designation",designationv)
-                                .append("password", hashed)
-                                .append("stars",starsv);
-
-                        MongoDB.officialCollection.insertOne(newOfficial);
-                        System.out.println("Successfully Inserted Official");
-
-                        //Redirecting to login
-                        Parent root = FXMLLoader.load(getClass().getResource("../login/login.fxml"));
+                            MongoDB.officialCollection.insertOne(newOfficial);
+                            System.out.println("Successfully Inserted Official");
+                            ArrayList<String>List= (ArrayList<String>) MongoDB.pstationCollection.find(eq("stationID", stationv)).first().get("OfficialList");
+                            List.add("username");
+//                            MongoDB.pstationCollection.findOneAnd(eq("stationID", stationv)).first().get("OfficialList");
+                            //Redirecting to login
+                            Parent root = FXMLLoader.load(getClass().getResource("../login/login.fxml"));
 //                        Stage window = (Stage) name.getScene().getWindow();
-                        Main.primaryStage.setScene(new Scene(root, 600, 475));
-                        Main.primaryStage.setTitle("Login-PoliceEnigma");
-                        Main.primaryStage.show();
+                            Main.primaryStage.setScene(new Scene(root, 600, 475));
+                            Main.primaryStage.setTitle("Login-PoliceEnigma");
+                            Main.primaryStage.show();
+                        }
                     }
                 }
             }
