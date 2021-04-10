@@ -91,8 +91,8 @@ public class registerController
                     else {
 
                         registermsg.setVisible(false);
-                        Document cc = MongoDB.pstationCollection.find(eq("stationID", stationv)).first();
-                        if(cc != null)
+                        Document cc = MongoDB.pstationCollection.find(eq("stationCode", stationv)).first();
+                        if(cc == null)
                         {
                             registermsg.setVisible(true);
                             registermsg.setText("the police station is not present");
@@ -123,9 +123,26 @@ public class registerController
 
                             MongoDB.officialCollection.insertOne(newOfficial);
                             System.out.println("Successfully Inserted Official");
-                            ArrayList<String>List= (ArrayList<String>) MongoDB.pstationCollection.find(eq("stationID", stationv)).first().get("OfficialList");
-                            List.add("username");
-//                            MongoDB.pstationCollection.findOneAnd(eq("stationID", stationv)).first().get("OfficialList");
+                            Document temp=MongoDB.pstationCollection.find(eq("stationCode", stationv)).first();
+
+                            String nnamev, ccityv, sstatev, ppincodev, aareav,newSCode;
+
+                            nnamev = (String)temp.get("stationName");
+                            newSCode=(String) temp.get("stationCode");
+                            ccityv = (String) temp.get("city");
+                            sstatev = (String) temp.get("state");
+                            ppincodev = (String) temp.get("PIN");
+                            aareav = (String) temp.get("area");
+                            ArrayList<String>Officials= (ArrayList<String>) temp.get("OfficialList");
+                            Officials.add("username");
+                           MongoDB.pstationCollection.updateOne(eq("stationCode", stationv),new Document("stationName", nnamev)
+                                   .append("stationCode", newSCode)
+                                   .append("city", ccityv)
+                                   .append("state", sstatev)
+                                   .append("PIN", ppincodev)
+                                   .append("area", aareav)
+                                   .append("OfficialList", Officials));
+                                   //updateOne(eq("stationID", stationv),);
                             //Redirecting to login
                             Parent root = FXMLLoader.load(getClass().getResource("../login/login.fxml"));
 //                        Stage window = (Stage) name.getScene().getWindow();
