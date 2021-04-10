@@ -128,6 +128,11 @@
                   <Font size="15.0" />
                </font>
             </TextField>
+            <Label fx:id="msg" alignment="CENTER" layoutX="255.0" layoutY="109.0" prefHeight="21.0" prefWidth="617.0" style="-fx-background-color: #F88379; -fx-background-radius: 10;" text="msg" textAlignment="CENTER" visible="false">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
          </children>
          <cursor>
             <Cursor fx:constant="HAND" />

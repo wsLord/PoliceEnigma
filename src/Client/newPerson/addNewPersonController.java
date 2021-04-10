@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -29,6 +30,7 @@ public class addNewPersonController
     public ImageView personImage;
     public ChoiceBox<String> gender;
     public TextField name,age,aadhaarNo,contact,city,state;
+    public Label msg;
     File file;
     public void onActionBack()
     {
@@ -68,12 +70,12 @@ public class addNewPersonController
 
             if (tuser != null) {
                 //no values found
-//                    registermsg.setVisible(true);
-//                    registermsg.setText("The aadhaar id is already present");
+                    msg.setVisible(true);
+                    msg.setText("The aadhaar id is already present");
             } else {
 
 
-//                        registermsg.setVisible(false);
+                        msg.setVisible(false);
                 Document newPerson = new Document("aadhaarId", aadhaarv)
                         .append("name", namev)
                         .append("age", agev)
@@ -84,7 +86,7 @@ public class addNewPersonController
 
                 MongoDB.personCollection.insertOne(newPerson);
                 System.out.println("Successfully Inserted Person");
-                //Redirecting to login
+                //Redirecting to Home
                 Parent root = FXMLLoader.load(getClass().getResource("../home/home.fxml"));
                 Main.primaryStage.setScene(new Scene(root, 1138, 575));
                 Main.primaryStage.setTitle("HOME-PoliceEnigma");
@@ -93,7 +95,7 @@ public class addNewPersonController
         }
         else
         {
-
+            msg.setText("All fields required");
         }
     }
     public boolean anyEmpty()
