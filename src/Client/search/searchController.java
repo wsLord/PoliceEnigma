@@ -9,10 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import org.bson.Document;
@@ -28,6 +25,7 @@ public class searchController
     public CheckBox caseID,name,station,place;
     public VBox options;
     public ScrollPane optionsPane;
+    public TilePane namePanel,stationPanel,placePanel,casePanel;
     public void onActionBack()
     {
 
@@ -134,7 +132,26 @@ public class searchController
         }
         else
         {
-            List<String> results = new ArrayList<>(); //Search and add
+            if(name.isSelected())
+            {
+                namePanel.setVisible(true);
+                Document regQuery=new Document();
+                regQuery.append("$regex", "^.*" +Pattern.quote(text));
+                regQuery.append("$options", "i");
+                Document findQuery=new Document();
+                findQuery.append("name",regQuery);
+                FindIterable<Document> result= MongoDB.personCollection.find(findQuery);
+                for(Document r:result)
+                {
+                    Pane pane=new Pane();
+                    Label lname=new Label();
+                    Label Name=new Label();
+                    lname.setText("Name:");
+                    Name.setText(r.getString("name"));
+                    Label laadhaar=new Label();
+                    Label Aadhaar=new Label();
+                }
+            }
         }
         displayLabel.setVisible(true);
     }

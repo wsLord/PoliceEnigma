@@ -3,6 +3,7 @@ package Client.newStation;
 import Common.Official;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 import java.util.ArrayList;
@@ -10,7 +11,8 @@ import java.util.ArrayList;
 public class addNewStationController
 {
     public MenuButton addedOfficials;
-    public TextField officialID;
+    public TextField officialID,name,city,state,pincode;
+    public TextArea area;
     ArrayList<String>Officials;
     public void onActionBack()
     {

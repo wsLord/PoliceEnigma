@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -114,6 +115,42 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
+                  <VBox layoutX="11.0" layoutY="181.0" prefHeight="371.0" prefWidth="976.0">
+                     <children>
+                        <TitledPane fx:id="namePanel" expanded="false" text="As per person name" visible="false">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                          </content>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </TitledPane>
+                        <TitledPane fx:id="casePanel" expanded="false" layoutX="10.0" layoutY="10.0" text="As per Case ID" visible="false">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                           </content>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </TitledPane>
+                        <TitledPane fx:id="stationPanel" expanded="false" layoutX="10.0" layoutY="35.0" text="As per Police Station ID" visible="false">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                           </content>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </TitledPane>
+                        <TitledPane fx:id="placePanel" expanded="false" layoutX="10.0" layoutY="61.0" text="As per place" visible="false">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                           </content>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </TitledPane>
+                     </children>
+                  </VBox>
                </children>
             </AnchorPane>
          </content>
