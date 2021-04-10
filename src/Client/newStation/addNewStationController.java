@@ -70,7 +70,7 @@ public class addNewStationController
         String newSCode = UniqueIDGenerator.randomUUID(5, -1, '*');
 
         Document newPStation = new Document("stationName", namev)
-                .append("stationCode", newSCode)
+                .append("stationID", newSCode)
                 .append("city", cityv)
                 .append("state", statev)
                 .append("PIN", pincodev)

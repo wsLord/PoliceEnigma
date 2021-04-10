@@ -17,6 +17,8 @@ import com.mongodb.client.model.Projections;
 import com.mongodb.client.model.Filters;
 import static com.mongodb.client.model.Filters.*;
 import static com.mongodb.client.model.Projections.*;
+import static com.mongodb.client.model.Updates.*;
+
 import com.mongodb.client.model.Sorts;
 import org.mindrot.jbcrypt.*;
 
@@ -58,13 +60,14 @@ public class registerController
         String cityv = city.getText();//
         String numberv = number.getText();//
         String statev = state.getText();//
-        String stationv = policeStationID.getText();
+        String stationcodev = policeStationID.getText();
         String designationv = designation.getText();
         String passwordv = password.getText();
         String cpasswordv = confirmPassword.getText();
         String genderv = gender.getValue();//
         int starsv = (int) stars.getValue();
         String aadhaarv = aadhaar.getText();//
+        String pincodev = pincode.getText();//
 
         if(!anyEmpty())
         {
@@ -89,13 +92,12 @@ public class registerController
                         registermsg.setText("the username is already in use");
                     }
                     else {
-
                         registermsg.setVisible(false);
-                        Document cc = MongoDB.pstationCollection.find(eq("stationCode", stationv)).first();
+                        Document cc = MongoDB.pstationCollection.find(eq("stationID", stationcodev)).first();
                         if(cc == null)
                         {
                             registermsg.setVisible(true);
-                            registermsg.setText("the police station is not present");
+                            registermsg.setText("Incorrect Police Station code/ Police Station is non existent");
                         }
                         else {
                             // Hashing the password
@@ -107,7 +109,8 @@ public class registerController
                                     .append("gender", genderv)
                                     .append("contact", new Document("phone", numberv)
                                             .append("city", cityv)
-                                            .append("state", statev));
+                                            .append("state", statev)
+                                            .append("PIN", pincodev));
 
                             MongoDB.personCollection.insertOne(newPerson);
                             System.out.println("Successfully Inserted Person");
@@ -116,33 +119,25 @@ public class registerController
                             System.out.println(id);
                             Document newOfficial = new Document("_id", id)
                                     .append("username", usernamev)
-                                    .append("stationID", stationv)
+                                    .append("stationID", stationcodev)
                                     .append("designation", designationv)
                                     .append("password", hashed)
                                     .append("stars", starsv);
 
                             MongoDB.officialCollection.insertOne(newOfficial);
                             System.out.println("Successfully Inserted Official");
-                            Document temp=MongoDB.pstationCollection.find(eq("stationCode", stationv)).first();
+                            MongoDB.pstationCollection.updateOne(
+                                    eq("stationID", stationcodev),
+                                    combine(addToSet("OfficialList", id)));
+//
+//                            MongoDB.officialCollection.updateOne(
+//                                    eq("_id", personID),
+//                                    combine(set("designation", designation.getText()),
+//                                            set("stationID", stationID.getText()),
+//                                            set("stars", (int)stars.getValue()),
+//                                            currentDate("lastModified")));
 
-                            String nnamev, ccityv, sstatev, ppincodev, aareav,newSCode;
 
-                            nnamev = (String)temp.get("stationName");
-                            newSCode=(String) temp.get("stationCode");
-                            ccityv = (String) temp.get("city");
-                            sstatev = (String) temp.get("state");
-                            ppincodev = (String) temp.get("PIN");
-                            aareav = (String) temp.get("area");
-                            ArrayList<String>Officials= (ArrayList<String>) temp.get("OfficialList");
-                            Officials.add("username");
-                           MongoDB.pstationCollection.updateOne(eq("stationCode", stationv),new Document("stationName", nnamev)
-                                   .append("stationCode", newSCode)
-                                   .append("city", ccityv)
-                                   .append("state", sstatev)
-                                   .append("PIN", ppincodev)
-                                   .append("area", aareav)
-                                   .append("OfficialList", Officials));
-                                   //updateOne(eq("stationID", stationv),);
                             //Redirecting to login
                             Parent root = FXMLLoader.load(getClass().getResource("../login/login.fxml"));
 //                        Stage window = (Stage) name.getScene().getWindow();
