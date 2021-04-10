@@ -20,8 +20,8 @@ Enigma for Police - Everything for Police at one place
 <a name="links"></a>
 ## Links:
 
-* Video Link: 
-* Presentation Link: 
+* [Video Link](https://drive.google.com/file/d/1AaKS0ErPDachje_QmIcVJQNKnL6jeV_K/view?usp=sharing)
+* [Presentation Link](https://drive.google.com/file/d/1npKkY68hb2QYSr1EnlP2uK3SpaBWzICo/view?usp=sharing)
 
 <a name="depend"></a>
 ## Tech-Stack Used
@@ -35,9 +35,9 @@ Enigma for Police - Everything for Police at one place
 
 Team Name: Bob The Builders
 
-* [Priyanshu Gupta](github.com/wsLord)
-* [Sanskar Jain](github.com/skj-7)
-* [Nilotpal Das](github.com/god-ctrl)
+* [Priyanshu Gupta](https://github.com/wsLord)
+* [Sanskar Jain](https://github.com/skj-7)
+* [Nilotpal Das](https://github.com/god-ctrl)
 
 ### Made at:
 <a href="https://hack36.com"> <img src="http://bit.ly/BuiltAtHack36" height=20px> </a>
