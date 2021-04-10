@@ -37,7 +37,7 @@ public class homeController
         Main.primaryStage.show();
     }
     public void onActionAddPoliceStation() throws IOException {
-        if(MongoDB.user.equals("Admin")) {
+        if(MongoDB.user.equals("admin")) {
             Parent root = FXMLLoader.load(getClass().getResource("../newStation/addNewStation.fxml"));
             Main.primaryStage.setScene(new Scene(root, 600, 475));
             Main.primaryStage.setTitle("New Station");

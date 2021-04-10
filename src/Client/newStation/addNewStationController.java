@@ -3,6 +3,7 @@ package Client.newStation;
 import Client.Main;
 import Common.Official;
 import Server.MongoDB;
+import Server.UniqueIDGenerator;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -53,36 +54,36 @@ public class addNewStationController
         }
     }
     public void onActionSubmit() throws IOException {
-        String namev,cityv,statev,pincodev,areav;
+        String namev, cityv, statev, pincodev, areav;
 
-        namev =name.getText();
-        cityv =city.getText();
-        statev=state.getText();
-        pincodev=pincode.getText();
-        areav=area.getText();
-        Document tt= MongoDB.pstationCollection.find(eq("stationName", namev)).first();
-        Document aa=  MongoDB.pstationCollection.find(eq("pincode", pincodev)).first();
+        namev = name.getText();
+        cityv = city.getText();
+        statev = state.getText();
+        pincodev = pincode.getText();
+        areav = area.getText();
 
-
-        if (tt != null||aa!=null) {
-            //no values found
+//        if (tt != null||aa!=null) {
+        //no values found
 //                msg.setVisible(true);
 //                msg.setText("Pincode or stationName already present");
-            System.out.println("Pincode or stationName already present");
-        }
-        else{
-            Document newPStation = new Document("stationName", namev)
-                    .append("city",cityv)
-                    .append("state", statev)
-                    .append("pincode", pincodev)
-                    .append("area", areav)
-                    .append("OfficialList",Officials);
-            MongoDB.pstationCollection.insertOne(newPStation);
-            System.out.println("Successfully Inserted Station");
-            Parent root = FXMLLoader.load(getClass().getResource("../home/home.fxml"));
-            Main.primaryStage.setScene(new Scene(root, 1138, 575));
-            Main.primaryStage.setTitle("HOME-PoliceEnigma");
-            Main.primaryStage.show();
-        }
+//            System.out.println("Pincode or stationName already present");
+//        }
+//        else{
+        String newSCode = UniqueIDGenerator.randomUUID(5, -1, '*');
+
+        Document newPStation = new Document("stationName", namev)
+                .append("stationCode", newSCode)
+                .append("city", cityv)
+                .append("state", statev)
+                .append("PIN", pincodev)
+                .append("area", areav)
+                .append("OfficialList", Officials);
+        MongoDB.pstationCollection.insertOne(newPStation);
+        System.out.println("Successfully Inserted Station");
+        Parent root = FXMLLoader.load(getClass().getResource("../home/home.fxml"));
+        Main.primaryStage.setScene(new Scene(root, 1138, 575));
+        Main.primaryStage.setTitle("HOME - PoliceEnigma");
+        Main.primaryStage.show();
+//    }
     }
 }

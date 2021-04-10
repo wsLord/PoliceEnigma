@@ -54,17 +54,17 @@ public class addNewPersonController
     }
     public void onActionSubmit() throws IOException {
 
-        String namev = name.getText();//
+        String namev = name.getText();
         Integer agev = 0;
         if(!age.getText().isBlank()) {
-            agev = Integer.parseInt(age.getText());//
+            agev = Integer.parseInt(age.getText());
         }
-        String cityv = city.getText();//
-        String numberv = contact.getText();//
-        String statev = state.getText();//
-
-        String genderv = gender.getValue();//
-        String aadhaarv = aadhaarNo.getText();//
+        String cityv = city.getText();
+        String numberv = contact.getText();
+        String statev = state.getText();
+        String pincodev = pincode.getText();
+        String genderv = gender.getValue();
+        String aadhaarv = aadhaarNo.getText();
 
         if(!anyEmpty())
         {
@@ -84,7 +84,7 @@ public class addNewPersonController
                         .append("contact", new Document("phone", numberv)
                                 .append("city", cityv)
                                 .append("state", statev)
-                                .append("PIN", pincodev);
+                                .append("PIN", pincodev));
 
                 MongoDB.personCollection.insertOne(newPerson);
                 System.out.println("Successfully Inserted Person");
