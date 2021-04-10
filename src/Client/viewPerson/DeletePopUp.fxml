@@ -1,11 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.viewPerson.DeletePopUp">
-   <children>
-      <Label layoutX="175.0" layoutY="155.0" prefHeight="109.0" prefWidth="266.0" text="Person Deleted Successfully!!" />
-   </children>
-</AnchorPane>
+<BorderPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.viewPerson.deletePopUpController">
+   <center>
+      <AnchorPane maxHeight="326.0" maxWidth="495.0" prefHeight="326.0" prefWidth="495.0" style="-fx-border-color: #228B22; -fx-border-width: 10;" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="2.0" layoutY="111.0" prefHeight="51.0" prefWidth="489.0" text="Person Deleted Successfully!!" textAlignment="CENTER">
+               <font>
+                  <Font name="Candara Bold" size="26.0" />
+               </font>
+            </Label>
+            <ImageView blendMode="DARKEN" fitHeight="103.0" fitWidth="140.0" layoutX="170.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Static/img/successfully_done.jpg" />
+               </image>
+            </ImageView>
+            <Button layoutX="208.0" layoutY="217.0" mnemonicParsing="false" onAction="#onActionOK" prefHeight="35.0" prefWidth="79.0" style="-fx-background-color: #7CFC00;" text="Ok">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <Reflection />
+               </effect>
+            </Button>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
