@@ -29,7 +29,7 @@ public class addNewPersonController
     @FXML
     public ImageView personImage;
     public ChoiceBox<String> gender;
-    public TextField name,age,aadhaarNo,contact,city,state;
+    public TextField name,age,aadhaarNo,contact,city,state,pincode;
     public Label msg;
     File file;
     public void onActionBack() throws IOException {

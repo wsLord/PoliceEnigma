@@ -29,7 +29,7 @@ import org.bson.types.ObjectId;
 public class registerController
 {
     @FXML
-    public TextField userName,name,age, city, number,state,policeStationID,designation,aadhaar;
+    public TextField userName,name,age, city, number,state,policeStationID,designation,aadhaar,pincode;
     public PasswordField password,confirmPassword;
     public Label registermsg;
     public ChoiceBox<String> gender;

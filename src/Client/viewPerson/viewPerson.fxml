@@ -4,10 +4,10 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.Reflection?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -39,11 +39,7 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #EADDCA;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="image" fitHeight="139.0" fitWidth="147.0" layoutX="28.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../Static/img/user.jpg" />
-               </image>
-            </ImageView>
+            <ImageView fx:id="image" fitHeight="139.0" fitWidth="147.0" layoutX="28.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" />
             <Label layoutX="28.0" layoutY="196.0" prefHeight="23.0" prefWidth="107.0" text="Name">
                <font>
                   <Font name="System Bold" size="17.0" />
@@ -94,37 +90,37 @@
                   <Font size="15.0" />
                </font>
             </TextField>
-            <Label layoutX="374.0" layoutY="36.0" prefHeight="23.0" prefWidth="107.0" text="City">
+            <Label layoutX="350.0" layoutY="148.0" prefHeight="23.0" prefWidth="107.0" text="City">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
             </Label>
-            <TextField fx:id="city" editable="false" layoutX="447.0" layoutY="32.0" prefHeight="33.0" prefWidth="201.0" promptText="City">
+            <TextField fx:id="city" editable="false" layoutX="464.0" layoutY="144.0" prefHeight="33.0" prefWidth="201.0" promptText="City">
                <font>
                   <Font size="15.0" />
                </font>
             </TextField>
-            <Label layoutX="374.0" layoutY="78.0" prefHeight="23.0" prefWidth="107.0" text="State">
+            <Label layoutX="350.0" layoutY="195.0" prefHeight="23.0" prefWidth="107.0" text="State">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
             </Label>
-            <TextField fx:id="state" editable="false" layoutX="447.0" layoutY="75.0" prefHeight="33.0" prefWidth="201.0" promptText="State">
+            <TextField fx:id="state" editable="false" layoutX="464.0" layoutY="191.0" prefHeight="33.0" prefWidth="201.0" promptText="State">
                <font>
                   <Font size="15.0" />
                </font>
             </TextField>
-            <Label layoutX="374.0" layoutY="121.0" prefHeight="23.0" prefWidth="107.0" text="Pincode">
+            <Label layoutX="350.0" layoutY="237.0" prefHeight="23.0" prefWidth="107.0" text="Pincode">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
             </Label>
-            <TextField fx:id="pincode" editable="false" layoutX="447.0" layoutY="121.0" prefHeight="33.0" prefWidth="201.0" promptText="Pincode">
+            <TextField fx:id="pincode" editable="false" layoutX="464.0" layoutY="233.0" prefHeight="33.0" prefWidth="201.0" promptText="Pincode">
                <font>
                   <Font size="15.0" />
                </font>
             </TextField>
-            <Button fx:id="edit" layoutX="467.0" layoutY="362.0" mnemonicParsing="false" onAction="#onActionEdit" prefHeight="38.0" prefWidth="196.0" style="-fx-background-color: #A52A2A;" text="EDIT" textFill="WHITE">
+            <Button fx:id="edit" layoutX="432.0" layoutY="338.0" mnemonicParsing="false" onAction="#onActionEdit" prefHeight="38.0" prefWidth="111.0" style="-fx-background-color: #A52A2A;" text="EDIT" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
@@ -136,6 +132,22 @@
                </effect>
             </Button>
             <Button fx:id="submit" layoutX="467.0" layoutY="362.0" mnemonicParsing="false" onAction="#onActionSubmit" prefHeight="38.0" prefWidth="196.0" style="-fx-background-color: #A52A2A;" text="SUBMIT" textFill="WHITE" visible="false">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <Reflection />
+               </effect>
+            </Button>
+            <Label fx:id="msg" alignment="CENTER" layoutX="301.0" layoutY="71.0" prefHeight="19.0" prefWidth="471.0" style="-fx-background-color: #F88379; -fx-background-radius: 10;" text="msg" textAlignment="CENTER" visible="false">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Button fx:id="delete" layoutX="565.0" layoutY="338.0" mnemonicParsing="false" onAction="#onActionDelete" prefHeight="38.0" prefWidth="125.0" style="-fx-background-color: #A52A2A;" text="DELETE" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
@@ -190,6 +202,12 @@
                   <Font size="15.0" />
                </font>
             </TextField>
+            <Slider fx:id="stars" blockIncrement="5.0" disable="true" layoutX="121.0" layoutY="201.0" majorTickUnit="1.0" max="5.0" minorTickCount="0" prefHeight="25.0" prefWidth="255.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+            <Label layoutX="14.0" layoutY="201.0" text="Stars">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
    </right>
    <bottom>

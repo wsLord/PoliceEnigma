@@ -2,6 +2,8 @@ package Client.viewPerson;
 
 import Server.MongoDB;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -17,8 +19,10 @@ public class viewPersonController
     private Boolean isOfficer;
     public AnchorPane officialPane;
     public HBox casesPane;
-    public Button edit,submit;
+    public Button edit,submit,delete;
     public TextField name,age,aadhaar, phone,gender,city,state,pincode,username,designation,stationID;
+    public Label msg;
+    public Slider stars;
 
     public void checkTypeAndSet(ObjectId ID) {
         this.personID = ID;
@@ -26,6 +30,7 @@ public class viewPersonController
         Document aadmi = MongoDB.personCollection.find(eq("_id", personID)).first();
         Document policewaala = MongoDB.officialCollection.find(eq("_id", personID)).first();
 
+        assert aadmi != null;
         name.setText(aadmi.getString("name"));
         age.setText(aadmi.getString("age"));
         aadhaar.setText(aadmi.getString("aadhaarId"));
@@ -40,7 +45,7 @@ public class viewPersonController
             username.setText(policewaala.getString("username"));
             designation.setText(policewaala.getString("designation"));
             stationID.setText(policewaala.getString("stationID"));
-            stars.setText(policewaala.getString("stars"));
+            stars.setValue(Double.parseDouble(policewaala.getString("stars")));
         }
         else {
             officialPane.setVisible(false);
@@ -64,8 +69,9 @@ public class viewPersonController
         if(isOfficer && MongoDB.user.equals("admin")) {
 //            username.setEditable(true); username not editable
             designation.setEditable(true);stationID.setEditable(true);
-            stars.setEditable(true);
+            stars.setDisable(false);
         }
+
 
     }
 
@@ -87,10 +93,13 @@ public class viewPersonController
                     eq("_id", personID),
                     combine(set("designation", designation.getText()),
                             set("stationID", stationID.getText()),
-                            set("stars", stars.getText()),
+                            set("stars", stars.getValue()),
                             currentDate("lastModified")));
         }
 
-
+    }
+    public void onActionDelete()
+    {
+        
     }
 }
