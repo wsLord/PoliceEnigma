@@ -33,13 +33,14 @@ public class profileSettingController
         userName.setText(username);
         assert aadmi != null;
         name.setText(aadmi.getString("name"));
-        age.setText(aadmi.getString("age"));
+        age.setText(String.valueOf(aadmi.getInteger("age")));
         aadhaar.setText(aadmi.getString("aadhaarId"));
         gender.setValue(aadmi.getString("gender"));
-        phone.setText(aadmi.getString("phone"));
-        city.setText(aadmi.getString("city"));
-        state.setText(aadmi.getString("state"));
-//        pincode.setText(aadmi.getString("PIN"));
+        Document contact = (Document) aadmi.get("contact");
+        phone.setText(contact.getString("phone"));
+        city.setText(contact.getString("city"));
+        state.setText(contact.getString("state"));
+        pincode.setText(contact.getString("PIN"));
 
         designation.setText(policewaala.getString("designation"));
         policeStationID.setText(policewaala.getString("stationID"));
@@ -68,7 +69,7 @@ public class profileSettingController
                 eq("_id", personID),
                 new Document("aadhaarId", aadhaar.getText())
                         .append("name", name.getText())
-                        .append("age", age.getText())
+                        .append("age", Integer.parseInt(age.getText()))
                         .append("gender", gender.getValue())
                         .append("contact", new Document("phone", phone.getText())
                                 .append("city", city.getText())
